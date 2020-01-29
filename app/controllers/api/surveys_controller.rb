@@ -21,12 +21,12 @@ class Api::SurveysController < ApplicationController
     random_string = SecureRandom.hex
     app = Rpush::Apnsp8::App.new
     app.name = random_string
-    file = File.join(Rails.root, 'app', 'AuthKey_U4TBQWBRJD.p8')
-    app.apn_key = File.read(file)
+    app.apn_key = Rails.application.credentials.development[:PUSH_AUTH]
     app.environment = "development" # APNs environment.
-    app.apn_key_id = "U4TBQWBRJD"
-    app.team_id = "5KBWP959TD"
-    app.bundle_id = "com.expertservices.Sentiment-Bot"
+    app.apn_key_id = Rails.application.credentials.development[:APNS_KEY]
+    app.team_id = Rails.application.credentials.development[:TEAM_ID]
+    app.bundle_id = Rails.application.credentials.development[:BUNDLE_ID]
+    debugger
     app.connections = 1
     app.save!
 

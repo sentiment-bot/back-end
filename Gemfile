@@ -22,7 +22,6 @@ gem 'geocoder'
 gem 'cloudinary'
 gem 'rpush'
 
-
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

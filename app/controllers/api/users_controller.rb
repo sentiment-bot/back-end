@@ -42,7 +42,12 @@ class Api::UsersController < ApplicationController
     File.open(file, 'wb') do|f|
       f.write(base64)
     end
-    cloudinary = Cloudinary::Uploader.upload(file)
+    auth = {
+      cloud_name: Rails.application.credentials.development[:cloudinary][:cloud_name],
+      api_key:    Rails.application.credentials.development[:cloudinary][:api_key],
+      api_secret: Rails.application.credentials.development[:cloudinary][:api_secret]
+    }
+    cloudinary = Cloudinary::Uploader.upload(file, auth)
     image_url = cloudinary["url"]
     @user = current_user
     @user.image_url = image_url

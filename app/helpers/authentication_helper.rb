@@ -4,12 +4,12 @@ module AuthenticationHelper
   def AuthenticationHelper.issue_token(payload = {})
     exp = 24.hours.from_now
     payload[:exp] = exp.to_i
-    JWT.encode(payload, Rails.application.secrets.secret_key_base)
+    JWT.encode(payload, Rails.application.credentials.development[:secret_key_base])
   end
 
   def AuthenticationHelper.valid?(token)
     begin
-      JWT.decode(token, Rails.application.secrets.secret_key_base)
+      JWT.decode(token, Rails.application.credentials.development[:secret_key_base])
     rescue
       false
     end

@@ -31,16 +31,7 @@ Request Body:
 ## Every Endpoint Below Requires JWT token in Authorization Header
 
 
-#### Get User
 
-```
-GET api/users/:id
-```
-Request Body:
-
-```
-{ id: Integer }
-```
 
 Note: This endpoint should be used after logging in and decoding the JWT
 token in the front end to get the userId to retrieve all user attributes. 

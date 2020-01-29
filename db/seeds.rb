@@ -152,7 +152,7 @@ all_users = User.all
 
 all_users.each do |user|
   if !user.responses.empty?
-    user.last_survey_date = user.responses.last.date
+    user.last_survey_date = user.responses.order(date: :asc).last.date
     user.save
   end
 end

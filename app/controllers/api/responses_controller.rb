@@ -1,6 +1,6 @@
 class Api::ResponsesController < ApplicationController
 
-  before_action :verify_jwt_token, except: [:create]
+  #before_action :verify_jwt_token, except: [:create]
 
   def index
     if params[:user_id].present?
@@ -92,6 +92,6 @@ class Api::ResponsesController < ApplicationController
   end
 
   def response_params
-    params.permit(:id, :mood, :emoji, :longitude, :latitude, :date, :image_url, :place, :user_id, :team_id, :device_token)
+    params.permit(:id, :mood, :emoji, :longitude, :latitude, :date, :image_url, :place, :user_id, :team_id, :device_token, :survey_id)
   end
 end
